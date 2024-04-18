@@ -1,0 +1,101 @@
+﻿@model CallCenterExtension.Models.JOInfo
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Table</title>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/Scripts/Login/InputTable.js"></script>
+    <script src="/Scripts/JOinfo/JOInfo.js"></script>
+    <script src="/Scripts/JOinfo/LoadDataTable.js"></script>
+    <script src="/Scripts/JOinfo/HSStaff.js"></script>
+    <script src="/Scripts/JOinfo/DatePicker.js"></script>
+    <link rel="stylesheet" href="/Styles/table.css">
+</head>
+<body>
+    <div id="container">
+        <div id="table">
+            <div class="form-group" id="hsStaffContainer">
+                <label class="form-group label">HS Staff:</label>
+                <input type="text" name="HsStaff" id="HsStaff" placeholder="HS Staff" oninput="updateMedRepID()" />
+            </div>
+            <div>
+                <div class="form-group">
+                    <label class="form-group label">Custom Date:</label>
+                    <input type="text" id="custom-date" placeholder="Select Date" readonly>
+                </div>
+            </div>
+            <button id="btnLoad">Filter</button>
+            <br />
+            <br />
+            <div class="tablescroll" id="tablescroll">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>J.O Date</th>
+                            <th>Medtech/Phlebo Name</th>
+                            <th>Patient Name</th>
+                            <th>J.O Number</th>
+                            <th>Tray Number</th>
+                            <th>Time start of checking</th>
+                            <th>Time end of checking</th>
+                            <th>Name of Checker</th>
+                            <th>Checked Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="JOInfo" class="JOInfo"></tbody>
+                </table>
+            </div>
+            <br />
+            <div class="form-group">
+                <label class="form-group label">JO #:</label>
+                <input type="text" id="JO1" placeholder="Job Order #" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="PatientName"  hidden/>
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Tray #:</label>
+                <input type=text id="Tray" placeholder="Number of tray" />
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Name of Checker:</label>
+                <input type=text id="Checker" placeholder="Name of checker" value="@ViewBag.EmpName" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-group label"># of supplies received:</label>
+                <input type=text id="NoSupRec" placeholder="# of supplies received"  />
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Time Start of checking:</label>
+                <input type=text id="StartChecking" placeholder="Time-start of checking" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Time End of checking:  </label>
+                <input type=text id="EndChecking" placeholder="Time-end of checking" disabled />
+            </div>
+            <div id="JOButton">
+                @if (ViewBag.UserRole == "Encoder")
+                {
+                    <input type="submit" id="JO-Save" value="SAVE" />
+                }
+                @if (ViewBag.UserRole == "LabManager")
+                {
+                    <input type="submit" id="JO-Confirm" value="CONFIRM" />
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

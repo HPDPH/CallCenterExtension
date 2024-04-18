@@ -25,4 +25,11 @@ namespace CallCenterExtension.Models
         public string EmpID { get; set; }
     }
 
+    public class MedTech
+    {
+        public string MedRepID { get; set; }
+        public string MedRepName { get; set; }
+        public string HSSched { get; set; }
+    }
+
 }

@@ -1,0 +1,73 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* Bagong idinagdag na background color */
+    font-family: 'Roboto', sans-serif; /* Primary font */
+}
+
+.title-background {
+    color: #fff; /* Bagong kulay ng teksto */
+    font-family: Arial, sans-serif; /* Bagong font */
+    background-color: rgb(25, 181, 134);
+    width: 100%; /* Bagong sukat ng lapad */
+    text-align: center;
+    padding: 20px 0; /* Bagong padding */
+    margin-top: 30px; /* Binawasan ang margin-top */
+}
+
+.login-container {
+    width: 350px;
+    margin: 20px auto; /* Bagong auto margin */
+    background-color: #fff; /* Bagong background color */
+    border-radius: 10px; /* Binawasan ang border-radius */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Bagong box shadow */
+}
+
+.text-box {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box; /* Pumipigil sa sobra na lapad dulot ng padding at border */
+}
+
+.button-submit {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(25, 181, 134);
+    color: white;
+    font-family: Verdana;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+    .button-submit:hover {
+        background-color: rgb(91, 252, 204); /* Bagong hover background color */
+    }
+
+.error {
+    color: red; /* Bagong kulay ng teksto */
+    font-size: 12px; /* Bagong font size */
+}
+
+a {
+    color: rgb(94, 188, 232);
+    text-decoration: none; /* Bagong text-decoration */
+    font-size: 14px; /* Bagong font size */
+}
+
+    a:hover {
+        text-decoration: underline; /* Bagong hover text-decoration */
+    }
+
+.text-center {
+    text-align: center;
+}

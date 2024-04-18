@@ -11,94 +11,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/Styles/table.css" />
     <title>Sample Table</title>
-    <script src="~/Scripts/Login/InputTable.js"></script>
-    <script src="~/Scripts/JOinfo/JOInfo.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/Scripts/Login/InputTable.js"></script>
+    <script src="/Scripts/JOinfo/JOInfo.js"></script>
+    <script src="/Scripts/JOinfo/LoadDataTable.js"></script>
+    <script src="/Scripts/JOinfo/HSStaff.js"></script>
+    <script src="/Scripts/JOinfo/DatePicker.js"></script>
+    <link rel="stylesheet" href="/Styles/table.css">
 </head>
 <body>
     <div id="container">
         <div id="table">
-            <div class="form-group">
-                <label class="form-group label">HS Staff:</label>
-                <input type="text" name="HsStaff" id="HsStaff" placeholder="HS Staff" />
-            </div>
-            <div class="form-group">
-                <label class="form-group label">HS Sched:</label>
-                <input type=datetime-local name="HsSched" id="HsSched" placeholder="mm/dd/yyyy" />
-            </div>
-            <div class="tablescroll">
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>J.O Date</th>
-                            <th>Medtech/Phlebo Name</th>
-                            <th>Patient Name</th>
-                            <th>J.O Number</th>
-                            <th>Tray Number</th>
-                            <th>Time start of checking</th>
-                            <th>Time end of checking</th>
-                            <th>Name of Checker</th>
-                            <th># of supplies received</th>
-                        </tr>
-                    </thead>
-                    <tbody id="JOInfo" class="JOInfo">
-                        @foreach (var item in ViewBag.Display)
-                        {
-                        <tr>
-                            <td>@item.JODate</td>
-                            <td>@item.MedName</td>
-                            <td>@item.PName</td>
-                            <td>@item.JONum</td>
-                            <td>@item.TrayNum</td>
-                            <td>@item.SChecking</td>
-                            <td>@item.EChecking</td>
-                            <td>@item.ChkName</td>
-                            <td>@item.NoSupRec</td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-
-            </div>
+            @if (ViewBag.UserRole == "Encoder")
+            {
+                <div class="form-group" id="hsStaffContainer">
+                    <label class="form-group label">HS Staff:</label>
+                    <input type="text" name="HsStaff" id="HsStaff" placeholder="HS Staff" oninput="updateMedRepID()" />
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label class="form-group label">Custom Date:</label>
+                        <input type="text" id="custom-date" placeholder="Select Date" readonly>
+                    </div>
+                </div>
+                <button id="btnLoad">Filter</button>
+                <button id="btnDispute">For Dispute <span id="countBadge" class="count-badge">0</span></button>
+                <br />
+                <br />
+            }
+            @if (ViewBag.UserRole == "LabManager")
+            {
+                <div>
+                    <div class="form-group">
+                        <label class="form-group label">Custom Date:</label>
+                        <input type="text" id="custom-date-status" placeholder="Select Date" readonly>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label class="form-group label">Status:</label>
+                        <select id="status" name="status">
+                            <option value="Submitted">Submitted</option>
+                            <option value="For Dispute">For Dispute</option>
+                            <option value="Re-submitted">Re-Submitted</option>
+                            <option value="Confirmed">Confirmed</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="btnLoadstatus">Filter</button>
+                <br />
+                <br />
+            }
+            @if (ViewBag.UserRole == "Encoder")
+            {
+                <div class="tablescroll" id="tablescroll">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>J.O Date</th>
+                                <th style="min-width: 100px;">Status</th>
+                                <th>Medtech/Phlebo Name</th>
+                                <th>Patient Name</th>
+                                <th>Patient ID</th>
+                                <th>J.O Number</th>
+                                <th>Tray Number</th>
+                                <th>Supplies Remarks</th>
+                                <th>Time start of checking</th>
+                                <th>Time end of checking</th>
+                                <th>Name of Checker</th>
+                                <th style="min-width: 100px;">Dispute Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="JOInfo" class="JOInfo"></tbody>
+                    </table>
+                </div>
+            }
+            @if (ViewBag.UserRole == "LabManager")
+            {
+                <div class="tablescroll" id="tablescroll">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>J.O Date</th>
+                                <th>Status</th>
+                                <th>Medtech/Phlebo Name</th>
+                                <th>Patient ID</th>
+                                <th>J.O Number</th>
+                                <th>Tray Number</th>
+                                <th>Supplies Remarks</th>
+                                <th>Time start of checking</th>
+                                <th>Time end of checking</th>
+                                <th>Name of Checker</th>
+                                <th style="min-width: 100px;">Dispute Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="JOInfoMT" class="JOInfo"></tbody>
+                    </table>
+                </div>
+            }
             <br />
-                <div class="form-group">
-                    <label class="form-group label">JO #:</label>
-                    <input type="text" id="JO1" placeholder="Job Order #" />
-                </div>
-                <div class="form-group">
-                    <label class="form-group label">Tray #:</label>
-                    <input type=text id="Tray" placeholder="Number of tray" disabled />
-                </div>
-                <div class="form-group">
-                    <label class="form-group label">Name of Checker:</label>
-                    <input type=text id="Checker" placeholder="Name of checker" disabled />
-                </div>
-                <div class="form-group">
-                    <label class="form-group label"># of supplies received:</label>
-                    <input type=text id="NoSupRec" placeholder="# of supplies received" disabled />
-                </div>
-                <div class="form-group">
-                    <label class="form-group label">Time Start of checking:</label>
-                    <input type=text id="StartChecking" placeholder="Time-start of checking" disabled />
-                </div>
-                <div class="form-group">
-                    <label class="form-group label">Time End of checking:  </label>
-                    <input type=text id="EndChecking" placeholder="Time-end of checking" disabled />
-                </div>
-                <div id="JOButton">
+            @*<input type="text" id="DisputeRemarks" placeholder="Remarks for dispute" hidden>*@
+            <div id="popupContainer">
+                <div class="popupContent">
+                    <span class="close">&times;</span>
+                    <div class="message"></div>
                     @if (ViewBag.UserRole == "Encoder")
                     {
-                        <input type="submit" id="JO-Save" value="SAVE" />
+                        <div class="popupbuttons">
+                            <button class="revertButton">Go Back</button>
+                            <button class="SaveButton">Confirm Save</button>
+                        </div>
                     }
                     @if (ViewBag.UserRole == "LabManager")
                     {
-                        <input type="submit" id="JO-Confirm" value="CONFIRM" />
+                        <div class="popupbuttons">
+                            <button class="revertButton">Go Back</button>
+                            <button class="ConfirmButton">Confirm Save</button>
+                            <button class="DisputeButton">Confirm Dispute</button>
+                        </div>
                     }
                 </div>
             </div>
+            <br />
+            <div class="form-group">
+                <label class="form-group label">JO #:</label>
+                <input type="text" id="JO1" placeholder="Job Order #" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Patient ID:</label>
+                <input type=text id="PatientID" placeholder="Patient ID" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Tray #:</label>
+                <input type=text id="Tray" placeholder="Number of tray" />
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Name of Checker:</label>
+                <input type=text id="Checker" placeholder="Name of checker" value="@ViewBag.EmpName" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-group label"># of supplies received:</label>
+                @*<input type=text id="NoSupRec" placeholder="# of supplies received" />*@
+                <textarea id="NoSupRec" placeholder="# of supplies received" rows="4" cols="30"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Time Start of checking:</label>
+                <input type=text id="StartChecking" placeholder="Time-start of checking" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-group label">Time End of checking:  </label>
+                <input type=text id="EndChecking" placeholder="Time-end of checking" disabled />
+            </div>
+            @if (ViewBag.UserRole == "LabManager")
+            {
+                <div class="form-group">
+                    <label class="form-group label">Verified By:</label>
+                    <input type=text id="VerifiedBy" placeholder="Verified By" value="@ViewBag.EmpName" disabled />
+                </div>
+                @*<div class="form-group">
+                <label class="form-group label">Date Verified:  </label>
+                <input type=text id="Date Verified" placeholder="Date Verified" disabled />
+            </div>*@
+                @*<div class="form-group">
+                <label class="form-group label">For Dispute Remarks:  </label>
+                <input type=text id="DisputeRemarks" placeholder="Dispute Remarks" hidden/>
+            </div>*@
+            }
+            <div id="JOButton">
+                @if (ViewBag.UserRole == "Encoder")
+                {
+                    <input type="submit" id="JO-Save" value="SAVE" />
+                }
+                @if (ViewBag.UserRole == "LabManager")
+                {
+                    <input type="submit" id="JO-Dispute" value="FOR DISPUTE" />
+                    <input type="submit" id="JO-Confirm" value="CONFIRM" />
+                }
+            </div>
         </div>
+    </div>
 
 </body>
 </html>
-

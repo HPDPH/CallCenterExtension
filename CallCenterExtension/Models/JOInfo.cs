@@ -8,15 +8,20 @@ namespace CallCenterExtension.Models
 {
     public class JOInfo
     {
-        public string JODate { get; set; }
-        public string MedName { get; set; }
-        public string PName { get; set; }
-        public string JONum { get; set; }
-        public string TrayNum { get; set; }
-        public string SChecking { get; set; }
-        public string EChecking { get; set; }
-        public string ChkName { get; set; }
-        public string NoSupRec { get; set; }
-
+        public string JODATE { get; set; }
+        public string JONO { get; set; }
+        public string MEDREPNAME { get; set; }
+        public string PATIENTNAME { get; set; }
+        public string PATIENTID { get; set; }
+        public string TrayNo { get; set; }
+        public string CheckStart { get; set; }
+        public string CheckEnd { get; set; }
+        public string SUPPLIES_REMARKS { get; set; }
+        public string CHECKDT { get; set; }
+        public string CHECKBY { get; set; }
+        public string VERIFIEDBY { get; set; }
+        public string VERIFIEDDT { get; set; }
+        public string STAT_DESC { get; set; }
+        public string REMARKS { get; set; }
     }
 }

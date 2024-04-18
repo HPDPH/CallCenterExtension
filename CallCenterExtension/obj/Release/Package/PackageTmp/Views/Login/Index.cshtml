@@ -1,0 +1,36 @@
+﻿@model  CallCenterExtension.Models.Userlogin
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Styles/login.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="title-background">Call Center</h1>
+
+    <div class="login-container">
+        <h2 class="text-center">LOGIN</h2>
+        @using (@Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.EditorFor(Model => Model.UserID, new { htmlAttributes = new { @class = "text-box", placeholder = "Your Username.." } });
+            @Html.EditorFor(Model => Model.Password, new { htmlAttributes = new { @class = "text-box", Type = "Password", placeholder = "Your Password.." } });
+
+            <div class="error">
+                @Html.ValidationMessageFor(model => model.UserID)
+                <br />
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <button class="button-submit">Sign in</button>
+
+            //<a href="#">Forgot account?</a>
+        }
+    </div>
+</body>
+</html>

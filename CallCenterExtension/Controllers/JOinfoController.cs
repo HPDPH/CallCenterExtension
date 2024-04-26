@@ -63,15 +63,15 @@ namespace CallCenterExtension.Controllers
                     if (cn.State == ConnectionState.Closed) cn.Open();
                     if (ViewBag.UserRole == "Encoder")
                     {
-                        string str = "SELECT distinct CAST(T.HSSCHED AS DATE) JODATE,T.TRXNO JONO,R.MEDREPNAME, RTRIM(LTRIM(P.LASTNAME + ', ' + P.FIRSTNAME + ' ' + P.MIDDLENAME)) PATIENTNAME, P.PatientID, " +
-                                     "L.TrayNo,L.CheckStart,L.CheckEnd,SUPPLIES_REMARKS,CHECKDT,CHECKBY,VERIFIEDBY,VERIFIEDDT,S.STAT_DESC,For_dispute_remarks REMARKS " +
+                        string str = "SELECT distinct CAST(T.HSSCHED AS DATE) JODATE,T.TRXNO JONO,R.MEDREPNAME, RTRIM(LTRIM(P.LASTNAME + ', ' + P.FIRSTNAME + ' ' + P.MIDDLENAME)) PATIENTNAME, P.PatientID, L.SUPPLIES_REMARKS, " +
+                                     "L.TrayNo,L.CheckStart,L.CheckEnd,CHECKDT,CHECKBY,VERIFIEDBY,VERIFIEDDT,COALESCE(S.STAT_DESC, 'New') AS STAT_DESC,For_dispute_remarks REMARKS " +
                                      "FROM ORDER_TRX T " +
                                      "INNER JOIN ORDER_PATIENT P ON P.TRXNO = T.TRXNO " +
                                      "INNER JOIN ORDER_MEDREP M ON M.TRXNO = T.TRXNO " +
                                      "LEFT JOIN MEDREP_MASTER R ON R.MEDREPID = M.MEDREPID " +
-                                     "LEFT JOIN ORDER_LAB L ON L.TrxNo = T.TRXNO " +
+                                     "LEFT JOIN ORDER_LAB L ON L.TrxNo = T.TRXNO AND L.PatientID = P.PatientID " +
                                      "LEFT JOIN Order_Lab_Stat S ON S.Stat_Code = L.Stat " +
-                                     "WHERE R.MEDREPNAME = '" + medRepID + "' AND CAST(T.HSSCHED AS DATE) = '" + schedDate + "' AND L.STAT <> '2' ";
+                                     "WHERE R.MEDREPNAME = '" + medRepID + "' AND CAST(T.HSSCHED AS DATE) = '" + schedDate + "'";
 
                         SqlCommand cmd = new SqlCommand(str, cn);
                         cmd.CommandTimeout = 0;
@@ -91,6 +91,7 @@ namespace CallCenterExtension.Controllers
                                 CheckStart = dr["CheckStart"].ToString(),
                                 CheckEnd = dr["CheckEnd"].ToString(),
                                 CHECKBY = dr["CHECKBY"].ToString(),
+                                REMARKS = dr["REMARKS"].ToString(),
                                 //CHECKDT = dr["CHECKDT"].ToString()
                             };
                             Display.Add(JOTable);
@@ -98,6 +99,36 @@ namespace CallCenterExtension.Controllers
                     }
                     else if (ViewBag.UserRole == "LabManager")
                     {
+                        if (status == "Outstanding")
+                        {
+                            string str1 = "SELECT HsStaff,T.TrxNo,schedDate,PatientID,TrayNo,SUPPLIES_REMARKS,CheckStart," +
+                                     "CheckEnd,CheckBy,CheckDt,Stat,For_dispute_remarks,Stat_Desc " +
+                                     "FROM ORDER_LAB T LEFT JOIN Order_Lab_Stat S ON S.Stat_Code = Stat " +
+                                     "where schedDate = '" + schedDatestatus + "' and Stat_Desc <> 'Confirmed' ";
+                            SqlCommand cmd1 = new SqlCommand(str1, cn);
+                            cmd1.CommandTimeout = 0;
+                            SqlDataReader dr1 = cmd1.ExecuteReader();
+                            while (dr1.Read())
+                            {
+                                JOInfo JOTable = new JOInfo
+                                {
+                                    JODATE = dr1["schedDate"].ToString(),
+                                    STAT_DESC = dr1["STAT_DESC"].ToString(),
+                                    MEDREPNAME = dr1["hsStaff"].ToString(),
+                                    PATIENTID = dr1["PatientID"].ToString(),
+                                    JONO = dr1["TrxNo"].ToString(),
+                                    TrayNo = dr1["TrayNo"].ToString(),
+                                    SUPPLIES_REMARKS = dr1["SUPPLIES_REMARKS"].ToString(),
+                                    CheckStart = dr1["CheckStart"].ToString(),
+                                    CheckEnd = dr1["CheckEnd"].ToString(),
+                                    CHECKBY = dr1["CHECKBY"].ToString(),
+                                    CHECKDT = dr1["CHECKDT"].ToString(),
+                                    REMARKS = dr1["For_dispute_remarks"].ToString(),
+                                };
+                                Display.Add(JOTable);
+                            }
+                        }
+                        else { 
                         //string str = "SELECT * FROM ORDER_LAB ORDER BY SchedDate Desc";
                         string str = "SELECT HsStaff,T.TrxNo,schedDate,PatientID,TrayNo,SUPPLIES_REMARKS,CheckStart," +
                                      "CheckEnd,CheckBy,CheckDt,Stat,For_dispute_remarks,Stat_Desc " +
@@ -128,6 +159,7 @@ namespace CallCenterExtension.Controllers
                     }
                 }
             }
+        }
             catch (Exception ex)
             {
                 // Handle exceptions here
@@ -171,7 +203,7 @@ namespace CallCenterExtension.Controllers
                                      "LEFT JOIN MEDREP_MASTER R ON R.MEDREPID = M.MEDREPID " +
                                      "LEFT JOIN ORDER_LAB L ON L.TrxNo = T.TRXNO " +
                                      "LEFT JOIN Order_Lab_Stat S ON S.Stat_Code = L.Stat " +
-                                     "WHERE R.MEDREPNAME = '" + medRepID + "' AND CAST(T.HSSCHED AS DATE) = '" + schedDate + "' AND L.STAT = '2' ";
+                                     "WHERE L.STAT = '2' ";
 
                         SqlCommand cmd = new SqlCommand(str, cn);
                         cmd.CommandTimeout = 0;
@@ -230,7 +262,7 @@ namespace CallCenterExtension.Controllers
                 //cmd.ExecuteNonQuery();
                 //cmd.Dispose();
 
-                var result = "SELECT TOP 1 1 FROM order_lab WHERE trxno = '" + orderLab.TrxNo + "' and PatientID = '" + orderLab.PatientID + "' and stat = '2' ";
+                var result = "SELECT TOP 1 1 FROM order_lab WHERE trxno = '" + orderLab.TrxNo + "' and PatientID = '" + orderLab.PatientID + "'";
                 cmd = new SqlCommand(result, cn);
                 var exists = cmd.ExecuteScalar(); // ExecuteScalar is used to retrieve a single value (in this case, if the record exists)
                 cmd.Dispose();
@@ -240,6 +272,9 @@ namespace CallCenterExtension.Controllers
 
                     str = "INSERT INTO order_lab (HsStaff,schedDate,TrxNo,PatientID,TrayNo,SUPPLIES_REMARKS,CheckStart,CheckEnd,CheckBy,CheckDt,Stat) " +
                        "  VALUES (@HsStaff,@schedDate,@TrxNo,@PatientID,@TrayNo,@SUPPLIES_REMARKS,@CheckStart,@CheckEnd,@CheckBy,@CheckDt,@Stat)";
+
+                    //str = "INSERT INTO order_lab (docdate,TrxNo,PatientID,TrayNo,SuppliesQty,CheckStart,CheckEnd,CheckBy,CheckDt,Stat) " +
+                    //   "  VALUES (@schedDate,@TrxNo,@PatientID,@TrayNo,@SUPPLIES_REMARKS,@CheckStart,@CheckEnd,@CheckBy,@CheckDt,@Stat)";
 
                     cmd = new SqlCommand(str, cn);
                     cmd.CommandTimeout = 0;

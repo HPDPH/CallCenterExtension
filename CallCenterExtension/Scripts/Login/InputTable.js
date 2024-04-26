@@ -16,11 +16,24 @@ $(document).ready(function () {
             $('#PatientID').val(cells.eq(4).text()); // PatientID
             $('#JO1').val(cells.eq(5).text()); // J.O Number  
             $('#Tray').val(cells.eq(6).text()); // Tray
-            $('#Checker').val(cells.eq(10).text()); // checker
+            //$('#Checker').val(cells.eq(10).text()); // checker
             $('#NoSupRec').val(cells.eq(7).text()); // NoSupRec
-            $('#StartChecking').val(cells.eq(8).text()); // Schecking
-            $('#EndChecking').val(cells.eq(9).text()); // Echecking      
+            //$('#StartChecking').val(cells.eq(8).text()); // Schecking
+            //$('#EndChecking').val(cells.eq(9).text()); // Echecking      
             $('#DisputeRemarks').val(cells.eq(11).text()); // Echecking    
+
+            var disputeRemarks = cells.eq(11).text().trim(); // Kunin ang DisputeRemarks
+
+            // Check kung may laman ang DisputeRemarks
+            if (disputeRemarks !== "") {
+                // Kung may laman, ipakita ang input field
+                $('#LabelDR').val(disputeRemarks).show();
+                $('#DisputeRemarks').val(disputeRemarks).show();
+            } else {
+                // Kung walang laman, itago ang input field
+                $('#LabelDR').hide();
+                $('#DisputeRemarks').hide();
+            }
         }
     });
 });

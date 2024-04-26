@@ -144,6 +144,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="logo.ico" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\JOinfo\DatePicker.js" />
@@ -164,8 +165,15 @@
     <Content Include="Scripts\Login\InputTable.js" />
     <Content Include="Scripts\Login\Login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Styles\BodyHeader.css" />
+    <Content Include="Styles\CountBadge.css" />
+    <Content Include="Styles\DatePicker.css" />
+    <Content Include="Styles\Element.css" />
+    <Content Include="Styles\HSStaffFilter.css" />
+    <Content Include="Styles\Input.css" />
     <Content Include="Styles\login.css" />
-    <Content Include="Styles\table.css" />
+    <Content Include="Styles\PopupJO.css" />
+    <Content Include="Styles\Table.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -188,6 +196,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
+    <Folder Include="Logo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -205,6 +215,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

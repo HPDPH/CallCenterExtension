@@ -1,0 +1,15 @@
+﻿/* CSS para sa count badge */
+#countBadge {
+    position: absolute; /* I-set ang position sa absolute */
+    top: 3px; /* Ilagay sa itaas ng button */
+    right: 9px; /* Ilagay sa kanan ng button */
+    background-color: white; /* Kulay ng badge */
+    color: red; /* Kulay ng text */
+    border-radius: 50%; /* I-round ang mga sulok */
+    padding: 0px 7px; /* Espasyo sa loob ng badge */
+    font-size: 12px; /* Laki ng text */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}

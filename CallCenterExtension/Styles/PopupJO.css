@@ -1,0 +1,80 @@
+﻿
+#popupContainer {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: -37px;
+    top: 0;
+    width: 115%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popupContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 500px;
+    text-align: left;
+    position: relative;
+    font-weight: normal;
+    margin-top: 50px;
+}
+
+
+.popupbuttons {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
+    cursor: pointer;
+}
+
+.revertButton, .SaveButton, .ConfirmButton, .DisputeButton {
+    /* Style buttons as needed */
+    margin-left: 1px; /* Add space between buttons */
+    cursor: pointer;
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Add border radius */
+    padding: 5px 10px; /* Add padding */
+    color: white;
+}
+
+.revertButton {
+    /* Style buttons as needed */
+    background-color: red;
+}
+
+    .revertButton:hover {
+        /* Style buttons as needed */
+        background-color: orangered;
+    }
+
+.SaveButton, .ConfirmButton, .DisputeButton {
+    /* Style buttons as needed */
+    background-color: rgb(11 124 3);
+}
+
+    .SaveButton:hover, .ConfirmButton:hover, .DisputeButton:hover {
+        /* Style buttons as needed */
+        background-color: rgb(31, 199, 36);
+        ;
+    }
+
+.close {
+    position: absolute;
+    top: 0px; /* Adjust as needed */
+    right: 5px; /* Adjust as needed */
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }

@@ -1,130 +1,10 @@
-﻿body {
-    font-family: 'Roboto', sans-serif; /* Primary font */
-    padding-top: 10px;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.container {
-    width: 50%;
-    margin: 50px auto;
-    padding: 10px;
-}
-
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 10%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-right: 50px;
-}
-
-#status {
-    /* Iyong mga styling rules dito */
-    width: 15%;
-    padding: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-right: 50px;
-}
-
-input[type="submit"] {
-    background-color: green;
-    color: white;
-    padding: 15px 35px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    margin: 3px;
-}
-
-
-input[type="submit"]:hover {
-    background-color: lightgreen;
-}
-
-#JO-Dispute {
-    background-color: red;
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    margin: 3px;
-}
-
-#JO-Dispute:hover {
-    background-color: orangered;
-}
-
-#btnLoad, #btnLoadstatus {
-    background-color: green;
-    color: white;
-    padding: 12px 27px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s ease;
-    margin: 3px;
-    width: 127px;
-    height: 41px;
-}
-
-    #btnLoad:hover, #btnLoadstatus:hover {
-        background-color: #45a049;
-    }
-
-#btnDispute {
-    position: relative;
-    background-color: red;
-    color: white;
-    padding: 10px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s ease;
-    margin: 3px;
-    width: 125px;
-    height: 40px;
-}
-
-    #btnDispute:hover {
-        background-color: orangered;
-    }
-
-/* CSS para sa count badge */
-#countBadge {
-    position: absolute; /* I-set ang position sa absolute */
-    top: 1px; /* Ilagay sa itaas ng button */
-    right: 2px; /* Ilagay sa kanan ng button */
-    background-color: white; /* Kulay ng badge */
-    color: red; /* Kulay ng text */
-    border-radius: 50%; /* I-round ang mga sulok */
-    padding: 2px 7px; /* Espasyo sa loob ng badge */
-    font-size: 12px; /* Laki ng text */
-}
-
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-
-table {
+﻿table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     background-color: #fff;
     height: 25vh;
-    background-color: lightgray;
+    background-color: #dddddd;
     min-width:100%;
 }
 
@@ -154,20 +34,134 @@ table {
 }
 
 th, td {
-    border: 1px solid #00ff90;
+    border: 1px solid #979090;
     padding: 10px;
-    text-align: center;
-    
+    text-align: left;
 }
+
+td:hover {
+    transform: perspective(1000px) rotateY(20deg);
+}
+
 
 td {
     cursor: pointer;
 }
 
+    td:hover {
+        background-color: #f9f9f9; /* Light gray background on hover */
+    }
+
+th[for="JODATE"] {
+    background-image: url('../Logo/date.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 24px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 52px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 77px;
+}
+
+th[for="Status"] {
+    background-image: url('../Logo/status.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 24px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 52px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="Medtech"] {
+    background-image: url(../Logo/medtech.png);
+    background-repeat: no-repeat;
+    background-position: 22px center;
+    background-size: 31px;
+    padding-left: 63px;
+    min-width: 65px;
+}
+
+th[for="PatientName"] {
+    background-image: url('../Logo/patient.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 31px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 58px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="PatientID"] {
+    background-image: url('../Logo/patientid.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 31px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 58px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="JobOrder"] {
+    background-image: url('../Logo/joborder.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 31px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 60px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="Tray"] {
+    background-image: url('../Logo/tray.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 31px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 60px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="Supplies"] {
+    background-image: url('../Logo/Supplies.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 31px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 60px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="Start"] {
+    background-image: url('../Logo/Start.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 35px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 61px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="End"] {
+    background-image: url('../Logo/End.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 30px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 60px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="Checker"] {
+    background-image: url('../Logo/Checker.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 35px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 63px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
+th[for="DRemarks"] {
+    background-image: url('../Logo/Remarks.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 22px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 31px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 62px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+    min-width: 65px;
+}
+
 th {
-    background-color: #00ff90;
-    color: black;
-    font-weight: bold;
+    background: #bbbbbb;
 }
 
 .JOInfo {
@@ -177,7 +171,7 @@ th {
 
 /* Alternate row background color */
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #fcfcfc;
 }
 
 /*th:nth-child(2) { adjust the column base on data
@@ -187,222 +181,3 @@ tr:nth-child(even) {
 #table {
     padding: 20px;
 }
-
-#JOButton {
-    display: flex;
-    justify-content: flex-end;
-}
-.text-center {
-    background-color: #00ff90;
-    font-family: Arial, sans-serif; /* Bagong font */
-    background-color: rgb(25, 181, 134);
-    width: 100%; /* Bagong sukat ng lapad */
-    text-align: center;
-    margin-top: 0px; /* Binawasan ang margin-top */
-    color: white;
-    display: flex;
-    justify-content: space-between;
-}
-
-.web-title {
-    margin-left: 15px;
-}
-.emp-info {
-    margin-right: 15px;
-}
-.right-title {
-    display: flex;
-}
-.logout {
-    margin-top:16px;
-    margin-right: 15px;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-    .form-group label {
-        margin-right: 10px;
-        white-space: nowrap;
-    }
-
-
-
-    .form-group input[type="text"] {
-        width: 15%; /* I-set ang parehong lapad para sa mga textbox */
-        padding: 5px;
-        box-sizing: border-box;
-        border-bottom: 1px solid gray;
-        /*width: calc(50% - 6px); /* Ito ang halimbawa ng percentage ng lapad ng textbox. I-adjust depende sa iyong preference */
-        margin-right: 6px; /* Ito ang halimbawa ng margin na ginagamit para sa spacing */
-        box-sizing: border-box; /* Ang `border-box` na value sa `box-sizing` property ay kinakailangan upang isama ang padding at border sa lapad ng elemento */
-        min-width: 200px; /*minimum na lapad ng textbox*/
-    }
-
-
-/* para to sa filtering sa HS Staff */
-.ui-autocomplete {
-    max-height: 200px;
-    padding-right: 1050px; /* Adjust as needed */
-    width: 10%; /* I-set ang parehong lapad para sa mga textbox */
-    padding: 5px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border-bottom: 1px solid #ddd;
-}
-
-.ui-menu-item {
-    padding: 5px 10px;
-    cursor: pointer;
-    background-color: #f5f5f5; /* Background color */
-    color: #333; /* Text color */
-    list-style-type: none;
-}
-
-    .ui-menu-item:hover {
-        background-color: #ddd; /* Hover background color */
-    }
-
-/* para to sa datetime picker sa HSSched */
-.ui-datepicker thead .ui-state-default {
-    background-color: grey !important; /* Set your desired background color */
-    color: grey; /* Set the text color */
-}
-
-.ui-datepicker {
-    background-color: transparent; /* Calendar background color */
-}
-
-.ui-datepicker-header {
-    background-color: lightgray; /* Header background color */
-    color: black; /* Header text color */
-}
-
-.ui-datepicker-calendar {
-    color: #00ff90; /* Calendar text color */
-    background-color: lightgray;
-}
-
-.ui-datepicker-current-day {
-    background-color: red; /* Current day background color */
-    color: white;
-}
-
-
-.ui-datepicker-prev:hover, .ui-datepicker-next:hover {
-    background-color: grey; /* Hover color for previous and next buttons */
-}
-
-.ui-datepicker-prev span,
-.ui-datepicker-next span {
-    display: none; /* Hide the default icons */
-}
-
-.ui-datepicker-prev:before,
-.ui-datepicker-next:before {
-    content: "◄ Prev. Month"; /* Set your desired text for previous button */
-    padding-right: 5px;
-}
-
-.ui-datepicker-next:before {
-    content: "► Next Month"; /* Set your desired text for next button */
-    padding-left: 5px;
-}
-
-.ui-datepicker-calendar a {
-    color: black; /* Link color in the calendar */
-    background-color: transparent;
-}
-
-    .ui-datepicker-calendar a:hover {
-        background-color: red; /* Hover color for calendar dates */
-        color: white; /* Hover color for calendar dates */
-    }
-
-
-#popupContainer {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: -37px;
-    top: 0;
-    width: 115%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popupContent {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 15px;
-    width: 70%;
-    max-width: 500px;
-    text-align: left;
-    position: relative;
-    font-weight: normal;
-    margin-top: 50px;
-}
-
-
-.popupbuttons {
-    position: absolute;
-    bottom: 10px; /* Adjust as needed */
-    right: 15px; /* Adjust as needed */
-    cursor: pointer;
-}
-
-.revertButton, .SaveButton, .ConfirmButton, .DisputeButton {
-    /* Style buttons as needed */
-    margin-left: 1px; /* Add space between buttons */
-    cursor: pointer;
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Add border radius */
-    padding: 5px 10px; /* Add padding */
-    color: white;
-}
-
-.revertButton {
-    /* Style buttons as needed */
-    background-color: red;
-}
-
-    .revertButton:hover {
-    /* Style buttons as needed */
-    background-color: lightcoral;
-}
-
-.SaveButton, .ConfirmButton, .DisputeButton {
-    /* Style buttons as needed */
-    background-color: green;
-}
-
-    .SaveButton:hover, .ConfirmButton:hover, .DisputeButton:hover {
-        /* Style buttons as needed */
-        background-color: #45a049;
-    }
-
-    .close {
-        position: absolute;
-        top: 0px; /* Adjust as needed */
-        right: 5px; /* Adjust as needed */
-        color: #aaa;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-

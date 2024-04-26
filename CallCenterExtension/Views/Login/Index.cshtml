@@ -11,26 +11,38 @@
     <link href="~/Styles/login.css" rel="stylesheet" />
 </head>
 <body>
-    <h1 class="title-background">Call Center</h1>
-
-    <div class="login-container">
-        <h2 class="text-center">LOGIN</h2>
-        @using (@Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            @Html.EditorFor(Model => Model.UserID, new { htmlAttributes = new { @class = "text-box", placeholder = "Your Username.." } });
-            @Html.EditorFor(Model => Model.Password, new { htmlAttributes = new { @class = "text-box", Type = "Password", placeholder = "Your Password.." } });
-
-            <div class="error">
-                @Html.ValidationMessageFor(model => model.UserID)
-                <br />
-                @Html.ValidationMessageFor(model => model.Password)
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab"></label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        @using (@Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <label for="user" class="label">Username</label>
+                            <span class="user-icon"></span>
+                            @Html.EditorFor(Model => Model.UserID, new { htmlAttributes = new { @class = "input", placeholder = "Your Username.." } })
+                            <br />
+                            <label for="pass" class="label">Password</label>
+                            <span class="pass-icon"></span>
+                            @Html.EditorFor(Model => Model.Password, new { htmlAttributes = new { @class = "input", Type = "Password", placeholder = "Your Password.." } })
+                            <br />
+                            <span class="login-icon"></span>
+                            <button type="submit" class="button">Sign in</button>
+                            <div class="error">
+                                <br />
+                                @Html.ValidationMessageFor(model => model.UserID)
+                                <br />
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+                            @*<a href="#">Forgot account?</a>*@
+                        }
+                    </div>
+                </div>
             </div>
-
-            <button class="button-submit">Sign in</button>
-
-            //<a href="#">Forgot account?</a>
-        }
+        </div>
     </div>
 </body>
 </html>

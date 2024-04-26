@@ -1,0 +1,535 @@
+﻿body {
+    font-family: 'Roboto', sans-serif; /* Primary font */
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    /*background-color: #a2f1d8;*/
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 10px;
+}
+
+#status {
+    /* Iyong mga styling rules dito */
+    width: 15%;
+    padding: 7px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-right: 50px;
+    margin-top: -20px;
+    min-width: 200px;
+    border: 1px solid black;
+    border-radius: 12px;
+    /*border-bottom: 2px solid rgb(25, 181, 134);
+    border-top: 2px solid gray;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;*/
+}
+
+input[type="submit"] {
+    background-color: rgb(11 124 3);
+    color: white;
+    padding: 18px 22px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: right;
+    transition: background-color 0.3s ease;
+    margin: 3px;
+    background-image: url('../Logo/save.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 14px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 24px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 40px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+}
+
+    input[type="submit"]:hover {
+        background-color: rgb(31, 199, 36);
+    }
+
+#JO-Dispute {
+    background-color: red;
+    color: white;
+    padding: 17px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin: 3px;
+    background-image: url('../Logo/dispute.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 14px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 24px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 40px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+}
+
+    #JO-Dispute:hover {
+        background-color: orangered;
+    }
+
+#btnLoad, #btnLoadstatus {
+    background-color: rgb(11 124 3);
+    color: white;
+    padding: 12px 27px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+    margin: 3px;
+    margin-top: -15px;
+    width: 127px;
+    height: 41px;
+    background-image: url('../Logo/filter.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 28px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 20px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 40px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+}
+
+    #btnLoad:hover, #btnLoadstatus:hover {
+        background-color: rgb(31, 199, 36);
+    }
+
+#btnDispute {
+    position: relative;
+    background-color: red;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+    margin: 3px;
+    width: 150px;
+    height: 40px;
+    background-image: url('../Logo/dispute.png'); /* Baguhin ang 'path/to/your/image.png' ayon sa tamang path ng iyong imahe */
+    background-repeat: no-repeat; /* Ito ay para hindi ma-repeat ang imahe */
+    background-position: 20px center; /* I-adjust ang position ng imahe depende sa iyong layout */
+    background-size: 24px; /* Ito ay para magbigay ng size sa iyong imahe */
+    padding-left: 40px; /* Dagdag padding sa kaliwa ng button para magbigay ng puwang sa iyong imahe */
+}
+
+    #btnDispute:hover {
+        background-color: orangered;
+    }
+
+
+
+#JOButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+    .form-group label[for="HS-Staff"] {
+        margin-right: -64px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -41px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="Custom-Date"] {
+        margin-right: -94px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -38px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="Custom-Date-Status"] {
+        margin-right: -94px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -38px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="Status"] {
+        margin-right: -53px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -53px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+
+    .form-group label[for="JO"] {
+        margin-right: -40px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -38px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="PatientID"] {
+        margin-right: -69px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -39px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+
+    .form-group label[for="Tray"] {
+        margin-right: -48px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -39px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="Checker"] {
+        margin-right: -117px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -39px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="Supplies"] {
+        margin-right: -157px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -250px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="Start"] {
+        margin-right: -151px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -32px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="End"] {
+        margin-right: -147px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -32px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="DisputeRemarks"] {
+        margin-right: -124px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -30px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+    .form-group label[for="VerifiedBy"] {
+        margin-right: -84px;
+        white-space: nowrap;
+        position: sticky;
+        margin-top: -32px;
+        margin-left: 8px;
+        background: white;
+        font-weight: bold;
+        transition: margin-top 0.3s ease;
+    }
+
+
+
+    .form-group input[type="text"] {
+        width: 15%; /* I-set ang parehong lapad para sa mga textbox */
+        padding: 5px;
+        box-sizing: border-box;
+        border-bottom: 1px solid gray;
+        /*width: calc(50% - 6px); /* Ito ang halimbawa ng percentage ng lapad ng textbox. I-adjust depende sa iyong preference */
+        margin-right: 6px; /* Ito ang halimbawa ng margin na ginagamit para sa spacing */
+        box-sizing: border-box; /* Ang `border-box` na value sa `box-sizing` property ay kinakailangan upang isama ang padding at border sa lapad ng elemento */
+        min-width: 200px; /*minimum na lapad ng textbox*/
+    }
+
+    .form-group input[for="HS-Staff"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+    }
+
+    .form-group input[for="Custom-Date"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+    }
+
+    .form-group input[for="Custom-Date-Status"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+    }
+
+    .form-group Select[for="Status"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        /*padding: 1.5em 2em;*/
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+        margin-top: 10px;
+    }
+
+
+    .form-group input[for="JO"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 33px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+    }
+
+        .form-group input[for="JO"]:not(:focus) + label[for="JO"] {
+            margin-top: 10px; /* Baguhin ang margin-top kapag naka-sticky at hindi focus ang input */
+        }
+
+    .form-group textarea[for="Supplies"]:not(:focus) + label[for="Supplies"] {
+        margin-top: 10px; /* Baguhin ang margin-top kapag naka-sticky at hindi focus ang input */
+    }
+
+    .form-group input[for="PatientID"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+    }
+
+    .form-group input[for="Tray"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+    }
+
+    .form-group input[for="Checker"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        /*padding: 1.5em 2em;*/
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+    }
+
+
+    .form-group textarea[for="Supplies"] {
+        border: 1px solid black;
+        border-radius: 1.8em;
+        margin-top: 5px; /* Magdagdag ng margin sa itaas ng textarea */
+        overflow: hidden; /* Pigilan ang mga elemento na lumampas sa hangganan */
+        resize: none;
+        padding: 0.8em 1em;
+    }
+
+    .form-group input[for="Start"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        /*padding: 1.5em 2em;*/
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+        margin-top: 10px;
+    }
+
+
+    .form-group input[for="End"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        /*padding: 1.5em 2em;*/
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+        margin-top: 10px;
+    }
+
+    .form-group input[for="DisputeRemarks"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        /*padding: 1.5em 2em;*/
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+        margin-top: 10px;
+    }
+
+    .form-group input[for="VerifiedBy"] {
+        color: black;
+        font-size: -5.75rem;
+        height: 35px;
+        border-style: none;
+        outline: none;
+        width: 9%;
+        /*padding: 1.5em 2em;*/
+        padding: 0.8em 1em;
+        border: 1px solid black;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #000 0%, #000 50%, #000 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border-radius: 1.8em;
+        background-size: 179% 100%;
+        transition: background-position 0.8s ease-out;
+        margin-top: 10px;
+    }
+
+#DisputeRemarks, #LabelDR {
+    display: none;
+}

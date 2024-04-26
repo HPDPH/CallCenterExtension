@@ -1,24 +1,28 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @*<script src="~/Scripts/jquery-3.3.1.js"></script>*@
+    <!-- I-load ang iyong mga style sheets o iba pang mga tag dito -->
 </head>
 <body>
     <div class="text-center">
         <h2 class="web-title"> JOB ORDER </h2>
         <div class="right-title">
             <h3 class="emp-info">@(ViewBag.EmpName + " (" + ViewBag.UserRole + ")")</h3>
-            <label class="logout" id="logout">@Html.ActionLink("LogOut", "LogOut", "Login")</label>
+            <label class="logout" id="logout">
+                <a href="@Url.Action("LogOut", "Login")">
+                    <img src="~/Logo/Logout.gif" alt="Log Out" /> <!-- Baguhin ang 'path/to/image.png' ayon sa tamang path ng iyong imahe -->
+                </a>
+            </label>
         </div>
     </div>
 
     <div>
         @RenderBody()
     </div>
+
+    <!-- I-load ang iyong mga script files o iba pang mga tag dito -->
 </body>
 </html>
-
 

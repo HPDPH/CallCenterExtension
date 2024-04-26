@@ -7,6 +7,14 @@
 var globalMedRepID; // Declare a global variable to store medRepID
 $(document).ready(function () {
 
+    var today = new Date();
+
+    // Kunin ang petsa sa format na "YYYY-MM-DD"
+    var formattedDate = today.toISOString().split('T')[0];
+
+    // Ilagay ang formattedDate bilang value ng input
+    document.getElementById("custom-date").value = formattedDate
+
     // Attach datepicker functionality to custom-date input
     $("#custom-date").datepicker({
         dateFormat: "yy-mm-dd", // Specify date format
@@ -125,7 +133,15 @@ function loaditemsdispute() {
     }
 }
 
+
 $(document).ready(function () {
+    var today = new Date();
+
+    // Kunin ang petsa sa format na "YYYY-MM-DD"
+    var formattedDate = today.toISOString().split('T')[0];
+
+    // Ilagay ang formattedDate bilang value ng input
+    document.getElementById("custom-date-status").value = formattedDate
 
     // Attach datepicker functionality to custom-date input
     $("#custom-date-status").datepicker({

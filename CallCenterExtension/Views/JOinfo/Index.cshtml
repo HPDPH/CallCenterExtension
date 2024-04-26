@@ -19,21 +19,27 @@
     <script src="/Scripts/JOinfo/LoadDataTable.js"></script>
     <script src="/Scripts/JOinfo/HSStaff.js"></script>
     <script src="/Scripts/JOinfo/DatePicker.js"></script>
-    <link rel="stylesheet" href="/Styles/table.css">
+    <link rel="stylesheet" href="~/Styles/Element.css">
+    <link rel="stylesheet" href="~/Styles/Table.css">
+    <link rel="stylesheet" href="~/Styles/DatePicker.css">
+    <link rel="stylesheet" href="~/Styles/PopupJO.css">
+    <link rel="stylesheet" href="~/Styles/HSStaffFilter.css">
+    <link rel="stylesheet" href="~/Styles/BodyHeader.css">
+    <link rel="stylesheet" href="~/Styles/CountBadge.css">
 </head>
 <body>
     <div id="container">
         <div id="table">
             @if (ViewBag.UserRole == "Encoder")
-            {
+            {    
                 <div class="form-group" id="hsStaffContainer">
-                    <label class="form-group label">HS Staff:</label>
-                    <input type="text" name="HsStaff" id="HsStaff" placeholder="HS Staff" oninput="updateMedRepID()" />
+                    <label class="form-group" for="HS-Staff">HS Staff</label>
+                    <input class="form-group" for="HS-Staff" type="text" name="HsStaff" id="HsStaff" oninput="updateMedRepID()" />
                 </div>
                 <div>
                     <div class="form-group">
-                        <label class="form-group label">Custom Date:</label>
-                        <input type="text" id="custom-date" placeholder="Select Date" readonly>
+                        <label class="form-group" for="Custom-Date">Custom Date</label>
+                        <input class="form-group" for="Custom-Date" type="text" id="custom-date" placeholder="Select Date" readonly>
                     </div>
                 </div>
                 <button id="btnLoad">Filter</button>
@@ -45,14 +51,15 @@
             {
                 <div>
                     <div class="form-group">
-                        <label class="form-group label">Custom Date:</label>
-                        <input type="text" id="custom-date-status" placeholder="Select Date" readonly>
+                        <label class="form-group" for="Custom-Date-Status">Custom Date</label>
+                        <input class="form-group" for="Custom-Date-Status" type="text" id="custom-date-status" placeholder="Select Date" readonly>
                     </div>
                 </div>
                 <div>
                     <div class="form-group">
-                        <label class="form-group label">Status:</label>
-                        <select id="status" name="status">
+                        <label class="form-group" for="Status">Status</label>
+                        <select class="form-group" for="Status" id="status" name="status">
+                            <option value="Outstanding">Outstanding</option>
                             <option value="Submitted">Submitted</option>
                             <option value="For Dispute">For Dispute</option>
                             <option value="Re-submitted">Re-Submitted</option>
@@ -70,18 +77,18 @@
                     <table border="1">
                         <thead>
                             <tr>
-                                <th>J.O Date</th>
-                                <th style="min-width: 100px;">Status</th>
-                                <th>Medtech/Phlebo Name</th>
-                                <th>Patient Name</th>
-                                <th>Patient ID</th>
-                                <th>J.O Number</th>
-                                <th>Tray Number</th>
-                                <th>Supplies Remarks</th>
-                                <th>Time start of checking</th>
-                                <th>Time end of checking</th>
-                                <th>Name of Checker</th>
-                                <th style="min-width: 100px;">Dispute Remarks</th>
+                                <th for="JODATE">J.O Date</th>
+                                <th for="Status">Status</th>
+                                <th for="Medtech">Medtech/Phlebo Name</th>
+                                <th for="PatientName">Patient Name</th>
+                                <th for="PatientID">Patient ID</th>
+                                <th for="JobOrder">J.O Number</th>
+                                <th for="Tray">Tray Number</th>
+                                <th for="Supplies">Supplies Remarks</th>
+                                <th for="Start">Time start of checking</th>
+                                <th for="End">Time end of checking</th>
+                                <th for="Checker">Name of Checker</th>
+                                <th for="DRemarks">Dispute Remarks</th>
                             </tr>
                         </thead>
                         <tbody id="JOInfo" class="JOInfo"></tbody>
@@ -94,17 +101,17 @@
                     <table border="1">
                         <thead>
                             <tr>
-                                <th>J.O Date</th>
-                                <th>Status</th>
-                                <th>Medtech/Phlebo Name</th>
-                                <th>Patient ID</th>
-                                <th>J.O Number</th>
-                                <th>Tray Number</th>
-                                <th>Supplies Remarks</th>
-                                <th>Time start of checking</th>
-                                <th>Time end of checking</th>
-                                <th>Name of Checker</th>
-                                <th style="min-width: 100px;">Dispute Remarks</th>
+                                <th for="JODATE">J.O Date</th>
+                                <th for="Status">Status</th>
+                                <th for="Medtech">Medtech/Phlebo Name</th>
+                                <th for="PatientID">Patient ID</th>
+                                <th for="JobOrder">J.O Number</th>
+                                <th for="Tray">Tray Number</th>
+                                <th for="Supplies">Supplies Remarks</th>
+                                <th for="Start">Time start of checking</th>
+                                <th for="End">Time end of checking</th>
+                                <th for="Checker">Name of Checker</th>
+                                <th for="DRemarks" style="min-width: 100px;">Dispute Remarks</th>
                             </tr>
                         </thead>
                         <tbody id="JOInfoMT" class="JOInfo"></tbody>
@@ -121,14 +128,14 @@
                     {
                         <div class="popupbuttons">
                             <button class="revertButton">Go Back</button>
-                            <button class="SaveButton">Confirm Save</button>
+                            <button class="SaveButton">Save </button>
                         </div>
                     }
                     @if (ViewBag.UserRole == "LabManager")
                     {
                         <div class="popupbuttons">
                             <button class="revertButton">Go Back</button>
-                            <button class="ConfirmButton">Confirm Save</button>
+                            <button class="ConfirmButton">Save</button>
                             <button class="DisputeButton">Confirm Dispute</button>
                         </div>
                     }
@@ -136,48 +143,67 @@
             </div>
             <br />
             <div class="form-group">
-                <label class="form-group label">JO #:</label>
-                <input type="text" id="JO1" placeholder="Job Order #" disabled />
+                <label class="form-group" for="JO">JO #</label>
+                <input class="form-group"type="text" id="JO1" for="JO" disabled />
             </div>
             <div class="form-group">
-                <label class="form-group label">Patient ID:</label>
-                <input type=text id="PatientID" placeholder="Patient ID" disabled />
+                <label class="form-group" for="PatientID">Patient ID</label>
+                <input class="form-group" for="PatientID" type=text id="PatientID" disabled />
+            </div>
+            @if (ViewBag.UserRole == "Encoder")
+            {
+                <div class="form-group">
+                    <label class="form-group" for="Tray"><span style="color: red; font-weight:bolder;">*</span> Tray #</label>
+                    <input class="form-group" for="Tray" type=text id="Tray" />
+                </div>
+                <div class="form-group">
+                    <label class="form-group" for="Supplies"><span style="color: red; font-weight:bolder;">*</span># of supplies received</label>
+                    @*<input type=text id="NoSupRec" placeholder="# of supplies received" />*@
+                    <textarea class="form-group" for="Supplies" id="NoSupRec" rows="15" cols="50" ></textarea>
+                </div>
+            }
+            @if (ViewBag.UserRole == "LabManager")
+            {
+                <div class="form-group">
+                    <label class="form-group" for="Tray">Tray #</label>
+                    <input class="form-group" for="Tray" type=text id="Tray" disabled />
+                </div>
+                <div class="form-group">
+                    <label class="form-group" for="Supplies"># of supplies received</label>
+                    @*<input type=text id="NoSupRec" placeholder="# of supplies received" />*@
+                    <textarea class="form-group" for="Supplies" id="NoSupRec" rows="15" cols="50" disabled></textarea>
+                </div>
+            }
+            <div class="form-group">
+                <label class="form-group" for="Checker">Name of Checker</label>
+                <input class="form-group" for="Checker" type=text id="Checker" value="@ViewBag.EmpName" disabled />
             </div>
             <div class="form-group">
-                <label class="form-group label">Tray #:</label>
-                <input type=text id="Tray" placeholder="Number of tray" />
+                <label class="form-group" for="Start">Start Time of Checking</label>
+                <input class="form-group" for="Start" type=text id="StartChecking" placeholder="Auto Populated" disabled />
             </div>
             <div class="form-group">
-                <label class="form-group label">Name of Checker:</label>
-                <input type=text id="Checker" placeholder="Name of checker" value="@ViewBag.EmpName" disabled />
+                <label class="form-group" for="End">End Time of Checking  </label>
+                <input class="form-group" for="End" type=text id="EndChecking" placeholder="Auto Populated" disabled />
             </div>
             <div class="form-group">
-                <label class="form-group label"># of supplies received:</label>
-                @*<input type=text id="NoSupRec" placeholder="# of supplies received" />*@
-                <textarea id="NoSupRec" placeholder="# of supplies received" rows="4" cols="30"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="form-group label">Time Start of checking:</label>
-                <input type=text id="StartChecking" placeholder="Time-start of checking" disabled />
-            </div>
-            <div class="form-group">
-                <label class="form-group label">Time End of checking:  </label>
-                <input type=text id="EndChecking" placeholder="Time-end of checking" disabled />
+                <label class="form-group" for="DisputeRemarks" id="LabelDR">Dispute Remarks  </label>
+                <input class="form-group" for="DisputeRemarks" type=text id="DisputeRemarks" placeholder="Dispute Remarks"  disabled/>
             </div>
             @if (ViewBag.UserRole == "LabManager")
             {
                 <div class="form-group">
-                    <label class="form-group label">Verified By:</label>
-                    <input type=text id="VerifiedBy" placeholder="Verified By" value="@ViewBag.EmpName" disabled />
+                    <label class="form-group" for="VerifiedBy">Verified By</label>
+                    <input class="form-group" for="VerifiedBy" type=text id="VerifiedBy" placeholder="Verified By" value="@ViewBag.EmpName" disabled />
                 </div>
                 @*<div class="form-group">
                 <label class="form-group label">Date Verified:  </label>
                 <input type=text id="Date Verified" placeholder="Date Verified" disabled />
-            </div>*@
-                @*<div class="form-group">
+                </div>*@
+               @*<div class="form-group">
                 <label class="form-group label">For Dispute Remarks:  </label>
-                <input type=text id="DisputeRemarks" placeholder="Dispute Remarks" hidden/>
-            </div>*@
+                <input type=text id="DisputeRemarks" placeholder="Dispute Remarks"/>
+                </div>*@
             }
             <div id="JOButton">
                 @if (ViewBag.UserRole == "Encoder")
@@ -192,6 +218,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>

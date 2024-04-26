@@ -1,0 +1,40 @@
+﻿.text-center {
+    /*background: linear-gradient(to bottom, #43c3a7, #1d855f);*/
+    background: linear-gradient(to bottom, #43c3a7, #68c7ff);
+    width: 100%; /* Bagong sukat ng lapad */
+    text-align: center;
+    /*margin-top: 0px; /* Binawasan ang margin-top */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -15px;
+    /*position: fixed;*/ /*Ang elementong ito ay naka-fixed position*/
+}
+
+.web-title {
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.emp-info {
+    margin-right: -8px;
+    margin-top: 20px;
+}
+
+.right-title {
+    display: flex;
+}
+
+.logout {
+    margin-top: 16px;
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    .logout img {
+        position: relative;
+        top: -12px;
+        right: -8px;
+    }

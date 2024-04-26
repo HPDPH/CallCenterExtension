@@ -1,0 +1,55 @@
+﻿/* para to sa datetime picker sa HSSched */
+.ui-datepicker thead .ui-state-default {
+    background-color: grey !important; /* Set your desired background color */
+    color: grey; /* Set the text color */
+}
+
+.ui-datepicker {
+    background-color: transparent; /* Calendar background color */
+}
+
+.ui-datepicker-header {
+    background: linear-gradient(to bottom, #43c3a7, #ffffff); /* Header background color */
+    color: black; /* Header text color */
+}
+
+.ui-datepicker-calendar {
+    color: #107242; /* Calendar text color */
+    background-color: lightgray;
+}
+
+.ui-datepicker-current-day {
+    background-color: #29f7c5; /* Current day background color */
+    color: white;
+}
+
+
+.ui-datepicker-prev:hover, .ui-datepicker-next:hover {
+    background-color: grey; /* Hover color for previous and next buttons */
+}
+
+.ui-datepicker-prev span,
+.ui-datepicker-next span {
+    display: none; /* Hide the default icons */
+}
+
+.ui-datepicker-prev:before,
+.ui-datepicker-next:before {
+    content: "◄ Prev. Month"; /* Set your desired text for previous button */
+    padding-right: 5px;
+}
+
+.ui-datepicker-next:before {
+    content: "► Next Month"; /* Set your desired text for next button */
+    padding-left: 5px;
+}
+
+.ui-datepicker-calendar a {
+    color: black; /* Link color in the calendar */
+    background-color: transparent;
+}
+
+    .ui-datepicker-calendar a:hover {
+        background-color: #29f7c5; /* Hover color for calendar dates */
+        color: black; /* Hover color for calendar dates */
+    }

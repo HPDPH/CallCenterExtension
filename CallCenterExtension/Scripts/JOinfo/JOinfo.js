@@ -23,7 +23,8 @@ $(document).ready(function () {
         var checkerName = $('#Checker').val();
         var suppliesReceived = $('#NoSupRec').val();
         var timeStartChecking = $('#StartChecking').val();
-        var timeEndChecking = $('#EndChecking').val();
+        var disputeRemarks = $('#DisputeRemarks').val();
+        //var timeEndChecking = $('#EndChecking').val();
         //var timeEndChecking = new date(); // Getting current date and time
 
         var message = "<strong>J.O Number:</strong> &nbsp;" + joNumber + "<br>" +
@@ -32,14 +33,21 @@ $(document).ready(function () {
             "<br>" +
             "<strong>Tray Number:</strong>&nbsp; " + trayNumber + "<br>" +
             "<br>" +
-            "<strong>Name of Checker:</strong> &nbsp;" + checkerName + "<br>" +
-            "<br>" +
             "<strong>Supplies Received:</strong>&nbsp;" + suppliesReceived + "<br>" +
             "<br>" +
-            "<strong>Time Start of Checking:</strong>&nbsp;" + timeStartChecking + "<br>" +
+            "<strong>Name of Checker:</strong> &nbsp;" + checkerName + "<br>" +
             "<br>" +
-            //"<strong>Time End of Checking:</strong>&nbsp; " + timeEndChecking + "<br><br>" +
-            "<strong>Are you sure you want to save?</strong>";
+            "<strong>Time Start of Checking:</strong>&nbsp;" + timeStartChecking + "<br>" +
+            "<br>";
+
+        // Check if disputeRemarks has a value
+        if (disputeRemarks.trim() !== '') {
+            message += "<strong>Dispute Remarks:</strong>&nbsp;" + disputeRemarks + "<br>" + "<br>";
+        }
+
+        // You can include the "Time End of Checking" section here, following the same approach as before
+
+        message += "<strong>Are you sure you want to save?</strong>";
 
         $('.popupContent .message').html(message);
 
@@ -92,7 +100,8 @@ function InsertJO() {
         success: function (data) {
             if (data) {
                 alert("Successful")
-               $('#popupContainer').fadeOut();
+                $('#popupContainer').fadeOut();
+                loaditems();
                 //alert("Successful")
             }
         },
@@ -196,6 +205,7 @@ function VerifyJO() {
             if (data) {
                 alert("Successful")
                 $('#popupContainer').fadeOut();
+                loaditemsmt()
             }
         },
         error: function (xhr, textStatus, errorThrown) {
@@ -275,7 +285,7 @@ $(document).ready(function () {
    
 
         // Ipapakita ang textbox para sa Dispute Remarks
-        $('#DisputeRemarks').css('display', 'block');
+        $('#DRemarks').css('display', 'block');
 
         var message = "<strong>J.O Number:</strong> &nbsp;" + joNumber + "<br>" +
             "<br>" +
@@ -290,7 +300,8 @@ $(document).ready(function () {
             "<strong>Verified By:</strong>&nbsp;" + verfiedBy + "<br>" +
             "<br>" +
             "<strong>Remarks for dispute:</strong> " + "&nbsp;" + "<br>" +
-            "<textarea id='DisputeRemarks' placeholder='Remarks for dispute' rows='4' cols='30'></textarea><br><br>" + // Dagdag na input field para sa Dispute Remarks
+            "<textarea id='DRemarks' placeholder='Remarks for dispute' rows='4' cols='30'></textarea><br><br>" + // Include the textarea element
+            "<br>" +
             "<strong>Are you sure you want to save?</strong>";
 
 
@@ -309,7 +320,7 @@ $(document).ready(function () {
     // Delegate event binding for revert button
     $(document).on('click', '.revertButton', function () {
         // Itago ang textbox para sa Dispute Remarks
-        $('#DisputeRemarks').css('display', 'none');
+        $('#DRemarks').css('display', 'none');
         $('#popupContainer').fadeOut();
     });
 
@@ -339,7 +350,7 @@ function DisputeJO() {
 
     // Format ng petsa at oras
     var formattedDate = currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2) + ' ' + ('0' + currentDate.getHours()).slice(-2) + ':' + ('0' + currentDate.getMinutes()).slice(-2) + ':' + ('0' + currentDate.getSeconds()).slice(-2);
-    var disputeRemarks = $('#DisputeRemarks').val();
+    var disputeRemarks = $('#DRemarks').val();
     $.ajax({
         url: '/JOinfo/DisputeJo',
         dataType: 'json',
@@ -353,6 +364,7 @@ function DisputeJO() {
             if (data) {
                 alert("Successful")
                 $('#popupContainer').fadeOut();
+                loaditemsmt()
             }
         },
         error: function (xhr, textStatus, errorThrown) {
